@@ -3,9 +3,10 @@ import { trainingData } from './training.js';
 import { FALLBACK_TOPIC } from '../../topics.js';
 
 // Small bag-of-words Naive Bayes model.
-// Training: per-topic word likelihoods P(word | topic) with Laplace smoothing.
+// Training: per-topic word likelihoods P(word | topic) with additive (Lidstone) smoothing.
 // Inference (multi-label): each known word "votes" with its posterior P(topic | word);
 // a topic is returned when its average vote share reaches MIN_SHARE (max 3 topics).
+const ALPHA = 0.1; // small smoothing keeps a tiny corpus decisive
 const MIN_SHARE = 0.25;
 const MAX_TOPICS = 3;
 
@@ -21,7 +22,7 @@ const train = (corpus) => {
     return { topic, counts, total: words.length };
   });
 
-  const likelihood = (t, w) => ((t.counts.get(w) ?? 0) + 1) / (t.total + vocabulary.size);
+  const likelihood = (t, w) => ((t.counts.get(w) ?? 0) + ALPHA) / (t.total + ALPHA * vocabulary.size);
 
   return {
     predict(text) {

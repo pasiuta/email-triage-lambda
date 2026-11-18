@@ -7,10 +7,18 @@ const MAX_SENTENCES = 2;
 const MAX_CHARS = 280;
 const MIN_WORDS = 3; // skips "Dear customer," and "Best regards, John"
 
+const GREETING = /^(dear|hi|hello|hey|good (morning|afternoon|evening))\b[^,.!?]{0,40},\s*/i;
+
+// "Hi support team, since yesterday..." becomes "Since yesterday..."
+const stripGreeting = (s) => {
+  const rest = s.replace(GREETING, '');
+  return rest.charAt(0).toUpperCase() + rest.slice(1);
+};
+
 const clip = (s) => (s.length <= MAX_CHARS ? s : `${s.slice(0, MAX_CHARS - 1).trimEnd()}…`);
 
 export const summarizeText = ({ subject, body }) => {
-  const sentences = splitSentences(body).filter((s) => tokenize(s).length >= MIN_WORDS);
+  const sentences = splitSentences(body).map(stripGreeting).filter((s) => tokenize(s).length >= MIN_WORDS);
   if (!sentences.length) return clip(body || subject);
 
   const freq = new Map();
