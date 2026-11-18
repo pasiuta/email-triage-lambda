@@ -1,5 +1,6 @@
 import { createLocalProvider } from './local.js';
 import { createAnthropicProvider } from './anthropic.js';
+import { createOpenAiProvider } from './openai.js';
 
 // Provider factory (Strategy pattern). Every provider has the same interface:
 //   { name: string, run(mode, { subject, body }): Promise<result> }
@@ -7,6 +8,7 @@ import { createAnthropicProvider } from './anthropic.js';
 const factories = {
   local: createLocalProvider,
   anthropic: createAnthropicProvider,
+  openai: createOpenAiProvider,
 };
 
 export const createProvider = (config) => {
