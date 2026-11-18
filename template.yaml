@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Email Triage Lambda - classifies and summarizes short texts
+
+Parameters:
+  ModelProvider:
+    Type: String
+    Default: local
+    AllowedValues: [local, anthropic, openai]
+
+Resources:
+  EmailTriageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app/handler.handler
+      Runtime: nodejs22.x
+      Architectures: [arm64] # Graviton: about 20% cheaper per GB-second
+      MemorySize: 256
+      Timeout: 30
+      Environment:
+        Variables:
+          MODEL_PROVIDER: !Ref ModelProvider
+          LOG_LEVEL: INFO
+          # API keys: inject from AWS Secrets Manager / SSM, never hard-code them here.
