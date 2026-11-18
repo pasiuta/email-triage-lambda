@@ -1,5 +1,3 @@
-// Single source of configuration, driven by environment variables (12-factor).
-// Frozen so nothing can mutate it at runtime.
 const env = process.env;
 const int = (value, fallback) => Number.parseInt(value ?? '', 10) || fallback;
 

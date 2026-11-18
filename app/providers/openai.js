@@ -1,7 +1,6 @@
 import { createLlmProvider, requireEnv } from './llm.js';
 import { postJson } from '../core/http.js';
 
-// OpenAI Chat Completions API. The default is a cheap non-reasoning model; set MODEL_NAME to change it.
 export const createOpenAiProvider = (config) => {
   const apiKey = requireEnv('OPENAI_API_KEY');
   const model = config.model ?? 'gpt-4o-mini';

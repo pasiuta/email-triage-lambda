@@ -5,8 +5,6 @@ import { createProvider } from './providers/index.js';
 import { createCache } from './core/cache.js';
 import { createProcessor } from './core/processor.js';
 
-// Built once per Lambda container (cold start), then reused by every warm invocation:
-// the model, HTTP keep-alive and the result cache all survive between calls.
 const provider = createProvider(config);
 const processBatch = createProcessor({
   provider,
@@ -15,12 +13,6 @@ const processBatch = createProcessor({
   logger,
 });
 
-/**
- * Lambda entry point.
- * Event: { mode?: "classify" | "summarize", items: Email[] }, or a bare Email[] array
- *        (the mode then comes from DEFAULT_MODE).
- * Returns one result per input item, in the same order.
- */
 export const handler = async (event) => {
   const { mode: modeName = config.defaultMode, items } = Array.isArray(event) ? { items: event } : (event ?? {});
 

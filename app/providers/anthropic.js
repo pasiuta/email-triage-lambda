@@ -1,7 +1,6 @@
 import { createLlmProvider, requireEnv } from './llm.js';
 import { postJson } from '../core/http.js';
 
-// Anthropic Messages API. The default is the cheapest model tier; set MODEL_NAME to change it.
 export const createAnthropicProvider = (config) => {
   const apiKey = requireEnv('ANTHROPIC_API_KEY');
   const model = config.model ?? 'claude-haiku-5-5';

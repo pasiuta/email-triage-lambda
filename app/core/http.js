@@ -1,6 +1,3 @@
-// POST JSON with a timeout and retries. Only transient failures are retried
-// (429, 5xx, network errors, timeouts). A 4xx such as a bad key fails at once,
-// so we never pay for useless retries.
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const isTransient = (status) => status === 429 || status >= 500;
 

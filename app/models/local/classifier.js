@@ -6,7 +6,7 @@ import { FALLBACK_TOPIC } from '../../topics.js';
 // Training: per-topic word likelihoods P(word | topic) with additive (Lidstone) smoothing.
 // Inference (multi-label): each known word "votes" with its posterior P(topic | word);
 // a topic is returned when its average vote share reaches MIN_SHARE (max 3 topics).
-const ALPHA = 0.1; // small smoothing keeps a tiny corpus decisive
+const ALPHA = 0.1;
 const MIN_SHARE = 0.25;
 const MAX_TOPICS = 3;
 
@@ -45,5 +45,4 @@ const train = (corpus) => {
   };
 };
 
-// Trained once per container (cold start) and reused by warm invocations.
 export const classifier = train(trainingData);

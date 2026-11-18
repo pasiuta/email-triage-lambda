@@ -1,8 +1,5 @@
 import { createHash } from 'node:crypto';
 
-// Memoizes async results by key. It stores the promise, not the value, so duplicate
-// emails in the same batch share one model call. The cache lives in module scope, so warm
-// Lambda invocations reuse it. Size is bounded (FIFO eviction) and failures are never cached.
 export const createCache = (maxSize = 1000) => {
   const store = new Map();
 

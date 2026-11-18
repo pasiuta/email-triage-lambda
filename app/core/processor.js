@@ -2,8 +2,6 @@ import { toDocument } from './input.js';
 import { mapLimit } from './pool.js';
 import { cacheKey } from './cache.js';
 
-// Runs one mode over a batch. Each item is isolated: invalid or failing items produce
-// { id, error } plus a log line, and the rest of the batch still goes through.
 export const createProcessor = ({ provider, cache, concurrency, logger }) =>
   (items, mode) =>
     mapLimit(items, concurrency, async (item) => {

@@ -1,7 +1,6 @@
 import { classifier } from '../models/local/classifier.js';
 import { summarizeText } from '../models/local/summarizer.js';
 
-// Offline provider: a bundled model that is deterministic, needs no keys and costs nothing.
 const tasks = {
   classify: (doc) => classifier.predict(`${doc.subject} ${doc.body}`),
   summarize: (doc) => summarizeText(doc),

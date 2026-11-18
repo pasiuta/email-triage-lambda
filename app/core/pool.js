@@ -1,5 +1,3 @@
-// Maps items through an async fn with at most `limit` calls in flight, preserving order.
-// Bounded concurrency keeps us under provider rate limits and keeps memory flat on big batches.
 export async function mapLimit(items, limit, fn) {
   const results = new Array(items.length);
   let next = 0;

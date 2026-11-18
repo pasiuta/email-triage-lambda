@@ -1,5 +1,3 @@
-// Tiny labelled corpus that the local classifier trains on at cold start (about 1 ms).
-// To improve accuracy, add examples here. Keys must match TOPICS in app/topics.js.
 export const trainingData = {
   finance: [
     'Invoice overdue payment due amount balance outstanding please pay',

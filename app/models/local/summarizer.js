@@ -5,11 +5,10 @@ import { tokenize, splitSentences } from './text.js';
 // and when it comes first. The top 1-2 sentences are returned in their original order.
 const MAX_SENTENCES = 2;
 const MAX_CHARS = 280;
-const MIN_WORDS = 3; // skips "Dear customer," and "Best regards, John"
+const MIN_WORDS = 3;
 
 const GREETING = /^(dear|hi|hello|hey|good (morning|afternoon|evening))\b[^,.!?]{0,40},\s*/i;
 
-// "Hi support team, since yesterday..." becomes "Since yesterday..."
 const stripGreeting = (s) => {
   const rest = s.replace(GREETING, '');
   return rest.charAt(0).toUpperCase() + rest.slice(1);
@@ -36,6 +35,5 @@ export const summarizeText = ({ subject, body }) => {
     .sort((a, b) => a.index - b.index);
 
   const summary = best.map((s) => s.text).join(' ');
-  // When two sentences are too long, keep only the best one.
   return summary.length <= MAX_CHARS ? summary : clip(best.reduce((a, b) => (a.score >= b.score ? a : b)).text);
 };
