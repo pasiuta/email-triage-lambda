@@ -1,0 +1,7 @@
+{
+  "mode": "classify",
+  "items": [
+    { "id": 1, "subject": "Invoice #1234 overdue", "body": "Dear customer, your invoice payment is overdue. Please pay the outstanding balance." },
+    { "id": 2, "subject": "", "body": " " }
+  ]
+}

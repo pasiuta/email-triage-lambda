@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "subject": "Invoice #1234 overdue",
+    "body": "Dear customer,\nOur records show that invoice #1234 for $2,450 was due on October 15 and remains unpaid. Please arrange payment within 7 days to avoid a late fee. If you have already paid, please ignore this reminder.\nBest regards,\nAccounts Receivable"
+  },
+  {
+    "id": 2,
+    "subject": "Weekly engineering sync",
+    "body": "Agenda: review the sprint backlog, discuss last night's production incident and the database latency spike, and plan the Kubernetes cluster upgrade. Please update your pull requests before the meeting."
+  },
+  {
+    "id": 3,
+    "subject": "Company retreat announcement",
+    "body": "We invite you to our annual company retreat in the mountains on June 12-14. The program includes team building activities and a wellbeing workshop for all employees. Our marketing team will capture photos and video for a social media campaign about our culture. HR will share travel arrangements next week."
+  },
+  { "id": 4, "subject": "", "body": " " },
+  {
+    "id": 5,
+    "subject": "Cannot log in to my account",
+    "body": "Hi support team, since yesterday I get an error message when I try to log in, and the password reset link is not working. Could you please help me?"
+  },
+  {
+    "id": 6,
+    "subject": "NDA for the new partnership",
+    "body": "Please review the attached non-disclosure agreement before Friday. Our legal team added a confidentiality clause and needs your signature on the final contract."
+  },
+  {
+    "id": 7,
+    "subject": "Special offer: upgrade to Premium",
+    "body": "Thanks for the demo call last week. As discussed, here is a pricing quote with a 20% discount if you upgrade your subscription to the Premium plan this quarter."
+  },
+  "this item is not an email object",
+  { "id": 9, "subject": 42, "body": null },
+  {
+    "id": 10,
+    "subject": "Invoice #1234 overdue",
+    "body": "Dear customer,\nOur records show that invoice #1234 for $2,450 was due on October 15 and remains unpaid. Please arrange payment within 7 days to avoid a late fee. If you have already paid, please ignore this reminder.\nBest regards,\nAccounts Receivable"
+  }
+]
