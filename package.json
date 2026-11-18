@@ -1,0 +1,18 @@
+{
+  "name": "email-triage-lambda",
+  "version": "1.0.0",
+  "description": "AWS Lambda that classifies short texts (emails) into topics or summarizes them, with a swappable model backend (local offline model or LLM API).",
+  "type": "module",
+  "main": "app/handler.js",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "classify": "node app/run.js --input sample/emails.json --mode classify --log-level INFO",
+    "summarize": "node app/run.js --input sample/emails.json --mode summarize --log-level INFO",
+    "test": "node --test",
+    "package": "zip -qr function.zip app package.json"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
